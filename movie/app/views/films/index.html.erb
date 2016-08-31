@@ -1,0 +1,32 @@
+<h1>All movies in our database</h1>
+<p><%= link_to 'Add movie', new_film_path %></p>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Year</th>
+			<th>Director</th>
+			<th>Stars</th>
+			<th>Options</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @films.each do |film| %>
+		<tr>
+			<td><%= film.name %></td>
+			<td><%= film.year %></td>
+			<td><%= film.director %></td>
+			<td><%= film.stars %></td>
+			<td><%= link_to 'Details', film_path(film) %>|<%= link_to 'Edit', edit_film_path(film) %>|<%= link_to 'Delete', film_path(film),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+			</td>
+		</tr>
+		<% end %>
+		<% if @films.empty? %>
+		<tr>
+		<td colspan="4">There are no movies... <%= link_to 'Add movie', new_film_path %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
