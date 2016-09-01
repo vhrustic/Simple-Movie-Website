@@ -1,0 +1,23 @@
+<h1>Create an account!</h1>
+
+<%= form_for @user, url: '/register' do |f| %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being created:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  Username: <%= f.text_field :username %> <br>
+  Email: <%= f.text_field :email %> <br>
+  Password: <%= f.password_field :password %> <br>
+  Password Confirmation: <%= f.password_field :password_confirmation %> <br>
+  <%= f.submit "Submit" %>
+
+<% end %>
