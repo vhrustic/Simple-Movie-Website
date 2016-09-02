@@ -11,10 +11,15 @@ class User < ApplicationRecord
   	validates_presence_of :password, :on => :create
   	validates_uniqueness_of :email, :username
 
+  	def self.authenticate(username, password)
+  		user = User.find_by_username(username)
+  		user && Password.new(user.password) == password ? user.id : -1
+  	end
+
   	private
 		def encrypt_password
 			if self.password.present?
-				self.password = Password.create(@password)
+				self.password = Password.create(self.password)
 			end
 		end
 end
