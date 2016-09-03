@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   match 'register', to: 'users#new', via: [:get], :as => 'register'
   match 'register', to: 'users#create', via: [:post]
   get '/profile' => 'users#profile', :as => 'profile'
+  get '/profile/edit' => 'users#edit', :as => 'edit_profile'
+  patch '/profile/edit' => 'users#update', :as => 'update_profile'
   get '/login' => 'sessions#new', :as => 'login'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy', :as => 'logout'

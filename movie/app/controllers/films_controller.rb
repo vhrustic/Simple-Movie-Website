@@ -1,4 +1,6 @@
 class FilmsController < ApplicationController
+  before_action :authorize
+
   def index
   	@films = Film.all
   end
@@ -14,7 +16,7 @@ class FilmsController < ApplicationController
   def create
   	@film = Film.new(film_params)
   	if @film.save
-  		redirect_to @film
+  		redirect_to films_path
   	else 
   		render 'new'
   	end

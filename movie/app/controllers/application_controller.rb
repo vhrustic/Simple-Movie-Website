@@ -8,5 +8,9 @@ class ApplicationController < ActionController::Base
   		if session[:id]
   			@current_user ||= User.find(session[:id])
   		end
+  		
+	end
+		def authorize
+		redirect_to '/login' unless current_user
 	end
 end

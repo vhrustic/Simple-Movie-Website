@@ -1,6 +1,6 @@
 <h1>All movies in our database</h1>
 <p><%= link_to 'Add movie', new_film_path %></p>
-<table>
+<table class="table">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -25,7 +25,7 @@
 		<% end %>
 		<% if @films.empty? %>
 		<tr>
-		<td colspan="4">There are no movies... <%= link_to 'Add movie', new_film_path %></td>
+		<td colspan="4">There are no movies...</td>
 		</tr>
 		<% end %>
 	</tbody>
