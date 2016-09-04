@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :films
+  resources :films do
+  	resources :reviews
+  end
   resources :users do
   	get 'profile'
   end

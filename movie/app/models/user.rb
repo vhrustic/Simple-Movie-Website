@@ -1,6 +1,8 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
+	has_many :reviews
+
 	include BCrypt
 	after_validation :encrypt_password
 

@@ -10,15 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901123432) do
+ActiveRecord::Schema.define(version: 20160903215957) do
 
   create_table "films", force: :cascade do |t|
     t.string   "name"
     t.integer  "year"
     t.string   "director"
     t.text     "stars"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.float    "rating",     default: 1.0
+    t.integer  "votes",      default: 0
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "score"
+    t.integer  "user_id"
+    t.integer  "film_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_reviews_on_film_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
