@@ -9,7 +9,8 @@
 <p>The movie hasn't been reviewed yet.</p>
 <% end %>
 
-<%= render @film.reviews %>
+<%= render @reviews %>
+<%= will_paginate @reviews %>
 
 <h3>Write your own review!</h3>
 <%= render 'reviews/new' %>
