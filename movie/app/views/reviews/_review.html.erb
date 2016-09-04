@@ -1,5 +1,8 @@
 <p><label><%= review.title.upcase %></label> - by: <i><%= review.user.username %></i></p>
 
-<p><%= review.text %>
+<p><% if review.own_review?(current_user) %>
+<%= link_to "[Edit review]", edit_film_review_path(@film, review) %>
+<% end %>
+<%= review.text %>
 
 <p><label>Score:</label> <%= review.score %></p>
