@@ -11,7 +11,8 @@ class ReviewsController < ApplicationController
 		if @review.save && @film.save
 			redirect_to film_path(@film)
 		else
-			render film_path(@film)
+			@reviews = @film.reviews.paginate(:page => params[:page], :per_page => 4)
+      		render 'films/show'
 		end
 	end
 
